@@ -6,6 +6,7 @@ import './App.css';
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { DateTime } from 'luxon';
 import { TooltipProps } from 'recharts/types/component/Tooltip';
+import GitHubButton from 'react-github-btn';
 
 interface PriceData {
   date: number;
@@ -179,19 +180,16 @@ function App() {
         * There is a 5% VAT on all gold purchases in Bangladesh <br />* If purchased in
         jewelry form, there is additional making charges
       </p>
-      <p></p>
-
-      <a
-        className='github-button'
-        href='https://github.com/sjsakib/gold-price'
-        target='_blank'
-        rel='noreferrer noopener'
-        data-icon='octicon-star'
-        data-show-count='true'
-        aria-label='Star sjsakib/gold-price on GitHub'
-      >
-        Star
-      </a>
+      <p>
+        <GitHubButton
+          href='https://github.com/sjsakib/gold-price'
+          data-icon='octicon-star'
+          aria-label='Star sjsakib/gold-price on GitHub'
+          data-show-count={true}
+        >
+          Star
+        </GitHubButton>
+      </p>
     </div>
   );
 }
