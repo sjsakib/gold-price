@@ -26,3 +26,8 @@ h1 {
 .button-group > button.active {
   background-color: #ffed8a6b;
 }
+
+.info {
+  margin-top: 64px;
+  font-size: 11px;
+}

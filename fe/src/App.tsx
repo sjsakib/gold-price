@@ -39,7 +39,7 @@ const units = ['gram', 'bhori'] as const;
 function App() {
   const [filter, setFilter] = useState<(typeof filters)[number]>('all time');
 
-  const [unit, setUnit] = useState<(typeof units)[number]>('gram');
+  const [unit, setUnit] = useState<(typeof units)[number]>('bhori');
 
   const priceData: PriceData[] = useMemo(
     () =>
@@ -166,6 +166,15 @@ function App() {
           </button>
         ))}
       </div>
+      <p className='info'>
+        * Prices are collected from{' '}
+        <a href='https://www.bajus.org/gold-price'>
+          Bangladesh Jewellers Association website
+        </a>
+        <br />
+        * There is a 5% VAT on all gold purchases in Bangladesh <br />
+        * If purchased in jewelry form, there is additional making charges
+      </p>
     </div>
   );
 }
