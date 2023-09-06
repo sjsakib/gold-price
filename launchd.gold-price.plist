@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>Gold Price Updater</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/gold-pirce.err</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/gold-price.out</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>sh</string>
+      <string>-c</string>
+      <!-- replace with correct path to update script -->
+      <string>{{script}}</string>
+    </array>
+    <key>StartInterval</key>
+    <!-- Every 6 hours -->
+    <integer>21600</integer>
+  </dict>
+</plist>
+
+<!-- Run: Put this file in ~/Library/LaunchAgents -->
+<!-- And run: `launchctl load -w ~/Library/LaunchAgents/launchd.gold-price.plist` -->
