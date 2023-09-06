@@ -28,6 +28,33 @@ h1 {
 }
 
 .info {
-  margin-top: 64px;
+  margin-top: 48px;
   font-size: 11px;
+}
+
+.last-price {
+  text-align: center;
+}
+
+table {
+  background-color: #fffdf5;
+  border-collapse: separate;
+  margin: auto;
+  border: 1px solid #ffd700;
+  border-radius: 16px;
+}
+
+th {
+  font-weight: bold;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 4px 24px;
+}
+
+td:not(:last-child),
+th:not(:last-child) {
+  border-right: 1px solid #ffd700;
 }

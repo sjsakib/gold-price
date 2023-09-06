@@ -106,6 +106,8 @@ function App() {
     );
   }
 
+  const lastPrice = priceData[priceData.length - 1];
+
   return (
     <div className='container'>
       <h1>Gold Price History in Bangladesh</h1>
@@ -167,6 +169,28 @@ function App() {
           </button>
         ))}
       </div>
+      <table>
+        <tr>
+          <th>22K</th>
+          <th>21K</th>
+          <th>18K</th>
+          <th>সনাতন</th>
+        </tr>
+
+        <tr>
+          {(['k22', 'k21', 'k18', 'traditional'] as const).map(k => (
+            <td key={k}>
+              {formatPrice({
+                price: lastPrice[k],
+                isBhori,
+              })}
+            </td>
+          ))}
+        </tr>
+      </table>
+      <p className='last-price'>
+        Last updated: {DateTime.fromMillis(lastPrice.date).toFormat('LLLL dd, yyyy')}{' '}
+      </p>
       <p className='info'>
         * Prices are collected from{' '}
         <a
