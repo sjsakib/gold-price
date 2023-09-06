@@ -168,13 +168,30 @@ function App() {
       </div>
       <p className='info'>
         * Prices are collected from{' '}
-        <a href='https://www.bajus.org/gold-price'>
+        <a
+          target='_blank'
+          rel='noreferrer noopener'
+          href='https://www.bajus.org/gold-price'
+        >
           Bangladesh Jewellers Association website
         </a>
         <br />
-        * There is a 5% VAT on all gold purchases in Bangladesh <br />
-        * If purchased in jewelry form, there is additional making charges
+        * There is a 5% VAT on all gold purchases in Bangladesh <br />* If purchased in
+        jewelry form, there is additional making charges
       </p>
+      <p></p>
+
+      <a
+        className='github-button'
+        href='https://github.com/sjsakib/gold-price'
+        target='_blank'
+        rel='noreferrer noopener'
+        data-icon='octicon-star'
+        data-show-count='true'
+        aria-label='Star sjsakib/gold-price on GitHub'
+      >
+        Star
+      </a>
     </div>
   );
 }
