@@ -22,7 +22,7 @@ func main() {
 	c := colly.NewCollector()
 
 	todayPrice := Price{}
-	todayPrice.Date = time.Now().Format("01-02-2006")
+	todayPrice.Date = time.Now().Format("2006-01-02")
 
 	getPrice := func(e *colly.HTMLElement) int {
 		priceStr := strings.NewReplacer(",", "", " BDT/GRAM", "").Replace(e.Text)

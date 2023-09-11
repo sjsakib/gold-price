@@ -16,6 +16,14 @@ interface PriceData {
   k22: number;
 }
 
+interface CSVPriceData {
+  date: string;
+  traditional: string;
+  k18: string;
+  k21: string;
+  k22: string;
+}
+
 function formatPrice({
   price,
   isBhori = false,
@@ -45,8 +53,8 @@ function App() {
   const priceData: PriceData[] = useMemo(
     () =>
       data
-        .map((d: PriceData) => ({
-          date: new Date(d.date).getTime(),
+        .map((d: CSVPriceData) => ({
+          date: DateTime.fromISO(d.date).toMillis(),
           k22: Number(d.k22),
           k21: Number(d.k21),
           k18: Number(d.k18),
@@ -89,10 +97,11 @@ function App() {
     }
 
     return (
-      <div
-       className='tooltip'
-      >
-        <span className='tooltip-date'>{DateTime.fromMillis(data.label).toFormat('LLL dd, yyyy')}</span> <br />
+      <div className='tooltip'>
+        <span className='tooltip-date'>
+          {DateTime.fromMillis(data.label).toFormat('LLL dd, yyyy')}
+        </span>{' '}
+        <br />
         <span>22K: {getFormattedPrice(k22)}</span> <br />
         <span>21K: {getFormattedPrice(k21)}</span> <br />
         <span>18K: {getFormattedPrice(k18)}</span> <br />
@@ -102,6 +111,8 @@ function App() {
   }
 
   const lastPrice = priceData[priceData.length - 1];
+
+  console.log({ priceData });
 
   return (
     <div className='container'>
