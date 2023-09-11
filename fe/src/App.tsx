@@ -114,7 +114,7 @@ function App() {
 
   return (
     <div className='container'>
-      <h1>Gold Price History in Bangladesh</h1>
+      <h1>Gold Price History in Bangladesh 🇧🇩</h1>
       <ResponsiveContainer width='98%' aspect={2}>
         <AreaChart data={priceData}>
           <defs>
