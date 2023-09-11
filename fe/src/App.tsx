@@ -135,7 +135,9 @@ function App() {
             dataKey='date'
             type='number'
             domain={['dataMin', 'dataMax']}
-            tickFormatter={d => DateTime.fromMillis(d).toFormat('LLL yyyy')}
+            tickFormatter={d =>
+              DateTime.fromMillis(d).toFormat(filter === 'month' ? 'LLL dd' : 'LLL yyyy')
+            }
           />
           <YAxis
             axisLine={false}
