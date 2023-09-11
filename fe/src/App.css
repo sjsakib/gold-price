@@ -23,6 +23,17 @@ h1 {
   margin: 4px;
 }
 
+.tooltip {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.14);
+  padding: 8px 16px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.67);
+}
+
+.tooltip-date {
+  font-weight: bold;
+}
+
 .button-group > button.active {
   background-color: #ffed8a6b;
 }
@@ -34,12 +45,16 @@ h1 {
 
 .last-price {
   text-align: center;
+  margin: 0;
+  margin-top: 8px;
+  font-size: 13px;
 }
 
 table {
   background-color: #fffdf5;
   border-collapse: separate;
   margin: auto;
+  margin-top: 16px;
   border: 1px solid #ffd700;
   border-radius: 16px;
 }

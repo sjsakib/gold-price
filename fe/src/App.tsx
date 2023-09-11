@@ -90,14 +90,9 @@ function App() {
 
     return (
       <div
-        style={{
-          boxShadow: '0 1px 3px rgba(0,0,0,.2), 0 1px 1px rgba(0,0,0,.14)',
-          padding: '8px 16px',
-          backgroundColor: 'white',
-          color: 'rgba(0, 0, 0, 0.67)',
-        }}
+       className='tooltip'
       >
-        {DateTime.fromMillis(data.label).toFormat('LLL dd, yyyy')} <br />
+        <span className='tooltip-date'>{DateTime.fromMillis(data.label).toFormat('LLL dd, yyyy')}</span> <br />
         <span>22K: {getFormattedPrice(k22)}</span> <br />
         <span>21K: {getFormattedPrice(k21)}</span> <br />
         <span>18K: {getFormattedPrice(k18)}</span> <br />
