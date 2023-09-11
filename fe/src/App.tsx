@@ -176,23 +176,26 @@ function App() {
         ))}
       </div>
       <table>
-        <tr>
-          <th>22K</th>
-          <th>21K</th>
-          <th>18K</th>
-          <th>সনাতন</th>
-        </tr>
-
-        <tr>
-          {(['k22', 'k21', 'k18', 'traditional'] as const).map(k => (
-            <td key={k}>
-              {formatPrice({
-                price: lastPrice[k],
-                isBhori,
-              })}
-            </td>
-          ))}
-        </tr>
+        <thead>
+          <tr>
+            <th>22K</th>
+            <th>21K</th>
+            <th>18K</th>
+            <th>সনাতন</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {(['k22', 'k21', 'k18', 'traditional'] as const).map(k => (
+              <td key={k}>
+                {formatPrice({
+                  price: lastPrice[k],
+                  isBhori,
+                })}
+              </td>
+            ))}
+          </tr>
+        </tbody>
       </table>
       <p className='last-price'>
         Last updated: {DateTime.fromMillis(lastPrice.date).toFormat('LLLL dd, yyyy')}{' '}
