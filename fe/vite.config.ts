@@ -9,6 +9,9 @@ export default defineConfig({
     react(),
     dsv(),
     VitePWA({
+      workbox: {
+        skipWaiting: true,
+      },
       manifest: {
         name: 'Gold Price History in Bangladesh',
         short_name: 'GoldPriceBD',
