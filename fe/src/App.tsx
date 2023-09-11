@@ -112,8 +112,6 @@ function App() {
 
   const lastPrice = priceData[priceData.length - 1];
 
-  console.log({ priceData });
-
   return (
     <div className='container'>
       <h1>Gold Price History in Bangladesh</h1>
