@@ -15,7 +15,8 @@
     "react-charts": "^3.0.0-beta.55",
     "react-dom": "^18.2.0",
     "react-github-btn": "^1.4.0",
-    "recharts": "^2.8.0"
+    "recharts": "^2.8.0",
+    "vite-plugin-pwa": "^0.16.5"
   },
   "devDependencies": {
     "@rollup/plugin-dsv": "^3.0.2",
