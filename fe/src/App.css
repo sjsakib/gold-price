@@ -74,3 +74,30 @@ td:not(:last-child),
 th:not(:last-child) {
   border-right: 1px solid #ffd700;
 }
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: black;
+      color: white;
+  }
+  a {
+    color: white;
+  }
+
+  table {
+    background-color: #2e2600;
+  }
+  button {
+    color: white;
+  }
+  .button-group > button.active {
+    background-color: #fdd6006b;
+  }
+  .tooltip {
+    box-shadow: 1px 1px 15px 0px #171717;
+    background-color: black;
+    color: white;
+    color: #ffffffab;
+  }
+}
