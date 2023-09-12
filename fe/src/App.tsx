@@ -7,6 +7,9 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'rec
 import { DateTime } from 'luxon';
 import { TooltipProps } from 'recharts/types/component/Tooltip';
 import GitHubButton from 'react-github-btn';
+import { registerSW } from 'virtual:pwa-register';
+
+registerSW({ immediate: true });
 
 interface PriceData {
   date: number;
