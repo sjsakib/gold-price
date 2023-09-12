@@ -19,6 +19,11 @@ export default defineConfig({
         theme_color: '#FFD700',
         icons: [
           {
+            src: 'coin.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
             src: 'coin-512.png',
             sizes: '512x512',
             type: 'image/png',
