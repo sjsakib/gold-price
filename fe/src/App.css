@@ -87,6 +87,7 @@ th:not(:last-child) {
   table {
     background-color: #2e2600;
     max-width: 95vw;
+    width: 360px;
   }
   button {
     color: white;
