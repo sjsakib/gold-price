@@ -64,8 +64,6 @@ func main() {
 		defer f.Close()
 		csvReader := csv.NewReader(f)
 
-		fmt.Println("reading fcsv.............")
-
 		records, err := csvReader.ReadAll()
 		if err != nil {
 			panic(err)
