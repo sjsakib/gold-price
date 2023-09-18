@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
 	"os"
 	"strconv"
@@ -16,6 +17,14 @@ type Price struct {
 	K21         int    `json:"k21"`
 	K18         int    `json:"k18"`
 	Traditional int    `json:"traditional"`
+}
+
+func writeRow(row *[]string, priceData *Price) {
+	(*row)[0] = priceData.Date
+	(*row)[1] = strconv.Itoa(priceData.K18)
+	(*row)[2] = strconv.Itoa(priceData.K21)
+	(*row)[3] = strconv.Itoa(priceData.K22)
+	(*row)[4] = strconv.Itoa(priceData.Traditional)
 }
 
 func main() {
@@ -48,12 +57,33 @@ func main() {
 	c.OnScraped(func(r *colly.Response) {
 		fmt.Println(todayPrice)
 
-		f, err := os.OpenFile("./fe/src/prices.csv", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		f, err := os.OpenFile("./fe/src/prices.csv", os.O_RDWR, 0644)
 		if err != nil {
 			panic(err)
 		}
 		defer f.Close()
-		fmt.Fprintf(f, "%s,%d,%d,%d,%d\n", todayPrice.Date, todayPrice.K18, todayPrice.K21, todayPrice.K22, todayPrice.Traditional)
+		csvReader := csv.NewReader(f)
+
+		fmt.Println("reading fcsv.............")
+
+		records, err := csvReader.ReadAll()
+		if err != nil {
+			panic(err)
+		}
+		exists := false
+		for i := 0; i < len(records); i++ {
+			if records[i][0] == todayPrice.Date {
+				writeRow(&records[i], &todayPrice)
+				exists = true
+				break
+			}
+		}
+		if !exists {
+			records = append(records, make([]string, 5))
+			writeRow(&records[len(records)-1], &todayPrice)
+		}
+		f.Seek(0, 0);
+		csv.NewWriter(f).WriteAll(records)
 	})
 
 	c.Visit("https://www.bajus.org/gold-price")
