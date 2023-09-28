@@ -40,6 +40,8 @@ h1 {
 
 .info {
   margin-top: 48px;
+  margin-left: 12px;
+  margin-right: 12px;
   font-size: 12px;
 }
 
@@ -76,11 +78,10 @@ th:not(:last-child) {
   border-right: 1px solid #ffd700;
 }
 
-
 @media (prefers-color-scheme: dark) {
   body {
-      background-color: black;
-      color: white;
+    background-color: black;
+    color: white;
   }
   a {
     color: white;
