@@ -126,7 +126,6 @@ function App() {
               <stop offset='95%' stopColor='#ffd7004f' stopOpacity={0} />
             </linearGradient>
           </defs>
-          x
           <Area
             type='monotone'
             dataKey='k21'
@@ -145,11 +144,6 @@ function App() {
           <YAxis
             axisLine={false}
             tickLine={false}
-            ticks={
-              unit === 'bhori'
-                ? [1543.20987654321, 5144.0329218107, 8573.388203017832]
-                : [1500, 5000, 8500]
-            }
             domain={['auto']}
             tickFormatter={d => formatPrice({ price: d, isBhori, showFraction: false })}
           />
