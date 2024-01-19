@@ -127,7 +127,7 @@ function App() {
             </linearGradient>
           </defs>
           <Area
-            type='monotone'
+            type='bump'
             dataKey='k21'
             stroke='#FFD700'
             fillOpacity={1}
