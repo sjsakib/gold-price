@@ -1,0 +1,59 @@
+name: Update Gold Price and Deploy
+
+# GitHub Actions সেটআপ করার জন্য প্রতি দিন নির্দিষ্ট সময়ে কাজ করবে
+on:
+  push:
+    branches:
+      - main  # main ব্রাঞ্চে পরিবর্তন হলে অটোমেটিক রান হবে
+  schedule:
+    - cron: '0 0 * * *'  # দৈনিক ১২ টায় রান হবে
+
+jobs:
+  update-gold-price:
+    runs-on: ubuntu-latest  # Ubuntu লিনাক্স চালানো হবে
+
+    steps:
+      # রিপোজিটরি থেকে কোড ক্লোন
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # GitHub actions সেটআপের জন্য Go সেটআপ করুন
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'  # Go সংস্করণ নির্বাচন
+
+      # ডিপেন্ডেন্সি ইনস্টল এবং Go কোড কমপাইল করা
+      - name: Install dependencies
+        run: |
+          go mod tidy  # Go মডিউল আপডেট
+
+      - name: Run update script
+        run: |
+          ./update.sh  # আপনার সোনার দাম আপডেট করার স্ক্রিপ্ট রান হবে
+
+      # (ঐচ্ছিক) কমিট করুন আপডেট করা ফাইলগুলো
+      - name: Commit changes
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
+          git add .
+          git commit -m "Update gold price"
+          git push
+
+  deploy-to-pages:
+    needs: update-gold-price  # প্রথম জব সফল হলে পরবর্তী জব রান হবে
+    runs-on: ubuntu-latest
+
+    steps:
+      # রিপোজিটরি থেকে কোড ক্লোন
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Cloudflare Pages এ ডিপ্লয়
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          project_name: "gold-price"
+          api_token: ${{ secrets.CF_API_TOKEN }}  # Cloudflare API Token, এটি GitHub Secrets এ সংরক্ষণ করতে হবে
+          
