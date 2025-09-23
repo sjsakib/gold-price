@@ -1,0 +1,53 @@
+name: Go
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # প্রতি ঘণ্টার প্রথম মিনিটে রান হবে
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
+
+    - name: Run update script to fetch new gold prices
+      run: |
+        chmod +x ./update.sh
+        ./update.sh  # সোনার দাম আপডেট করা
+
+    - name: Commit updated gold price
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "youremail@example.com"
+        git add .
+        git commit -m "Update gold price"
+        git push
+
+  deploy-to-pages:
+    needs: build  # Build সফল হলে এটি রান হবে
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages-action@v1
+      with:
+        project_name: "gold-price"
+        api_token: ${{ secrets.CF_API_TOKEN }}  # Cloudflare API Token, যা GitHub Secrets এ সংরক্ষিত
