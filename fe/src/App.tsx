@@ -202,7 +202,7 @@ function App() {
         <a
           target='_blank'
           rel='noreferrer noopener'
-          href='https://www.bajus.org/gold-price'
+          href='https://www.goldr.org'
         >
           Bangladesh Jewellers Association website
         </a>
@@ -211,14 +211,7 @@ function App() {
         jewelry form, there is additional making charges
       </p>
       <p>
-        <GitHubButton
-          href='https://github.com/sjsakib/gold-price'
-          data-icon='octicon-star'
-          aria-label='Star sjsakib/gold-price on GitHub'
-          data-show-count={true}
-        >
-          Star
-        </GitHubButton>
+        Powered by Gautam Kumar
       </p>
     </div>
   );
