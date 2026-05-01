@@ -57,7 +57,7 @@ func main() {
 	c.OnScraped(func(r *colly.Response) {
 		fmt.Println(todayPrice)
 
-		f, err := os.OpenFile("./fe/src/prices.csv", os.O_RDWR, 0644)
+		f, err := os.OpenFile("/Users/sakib/codes/gold-price.bd/data/gold-prices.csv", os.O_RDWR, 0644)
 		if err != nil {
 			panic(err)
 		}
