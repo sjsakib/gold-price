@@ -1,6 +1,7 @@
 # Gold Price History in Bangladesh
 
-> **This project is no longer maintained.** For current gold prices in Bangladesh, visit our new site: [gold-price.bd](https://gold-price.bd/).
+> **This project is no longer maintained.** For current gold prices in Bangladesh, visit the new site: [gold-price.bd](https://gold-price.bd/).
+> An [API]((https://gold-price.bd/api)) for latest gold and silver price is also available.
 
 Gold price history in Bangladesh visualized. The data is collected from [Bangladesh Jewellers Association](https://www.bajus.org/).
 
